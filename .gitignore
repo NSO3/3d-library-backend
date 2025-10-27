@@ -1,0 +1,65 @@
+# ----------------------------------------------------
+# 既存の雛形の設定 (Gradle, IDE)
+# ----------------------------------------------------
+HELP.md
+# Gradle Build/Cache
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+# 💡 .vscode/ はコミット対象から外すことが多いが、
+# 💡 雛形は除外していないため、ここではそのままにします。
+# .vscode/
+
+# ----------------------------------------------------
+# 💡 Spring Boot/Java/DB 固有の追加設定
+# ----------------------------------------------------
+
+# 1. ローカル設定と機密情報
+#    application-local.propertiesに設定したパスワードなどをGitから除外
+application-local.properties
+application.properties.local
+application.yml.local
+
+# 2. H2 Database Files
+#    H2をインメモリではなくファイルモードで実行した場合に生成されるファイルを除外
+*.mv.db 
+*.trace.db 
+
+# 3. Java Runtime/Compiled Files
+#    クラスファイル、ログ、ダンプファイルなどを除外
+# *.[cj]lass
+# *.log
+# *.bak
+# *.swp
