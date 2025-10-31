@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Data // Getter, Setter, toString, equals/hashCode を自動生成
@@ -23,6 +24,7 @@ public class Page {
     private String content;
 
     // ページが属する本 (多対一の関係)
+    @JsonBackReference // 💡 【修正】JSONの子側 (親への逆参照を停止)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
