@@ -51,6 +51,7 @@ out/
 application-local.properties
 application.properties.local
 application.yml.local
+src/main/resources/data.sql
 
 # 2. H2 Database Files
 #    H2をインメモリではなくファイルモードで実行した場合に生成されるファイルを除外
