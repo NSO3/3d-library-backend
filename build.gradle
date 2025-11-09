@@ -35,8 +35,24 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// 💡 Spring Securityの追加
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // 💡 JWT (JSON Web Token) の追加
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// 💡 【追加】@Nonnull を提供する Jakarta EE のアノテーションAPI
+	implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// bootRun タスクの設定を修正または追加
+tasks.named('bootRun') {
+    // 起動引数としてプロファイルを指定
+    args = ['--spring.profiles.active=local']
 }

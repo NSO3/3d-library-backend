@@ -7,6 +7,7 @@ import com.library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import lombok.NonNull;
 
 import java.util.List;
 
@@ -38,10 +39,10 @@ public class BookService {
 
     // 3. 本詳細の取得 (BookDetailPage用)
     @Transactional(readOnly = true)
-    public Book findById(Long id) {
+    public Book findById(@NonNull Long id) {
         // 💡 IDが見つからない場合は例外をスロー
-        return bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
+    return bookRepository.findById(id)
+                .orElseThrow(() -> new com.library.exception.ResourceNotFoundException("Book", "id", id));
     }
 
     // 4. 本の検索 (SearchPage用)
